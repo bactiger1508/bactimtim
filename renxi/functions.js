@@ -1,4 +1,3 @@
-
 var $win = $(window);
 var clientWidth = $win.width();
 var clientHeight = $win.height();
@@ -23,11 +22,11 @@ $(window).resize(function() {
 				} else {
 					progress++;
 				}
-				$ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+				$ele.html(str.substring(0, progress));
 				if (progress >= str.length) {
 					clearInterval(timer);
 				}
-			}, 50);
+			}, 30);
 		});
 		return this;
 	};

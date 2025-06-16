@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(https://i.pinimg.com/originals/d7/f4/c8/d7f4c81124cc52624bd34184793b4ce1.gif);
+    background: url('../img/background.jpeg') no-repeat center center fixed;
     background-size: cover;
     font-size: 14px;
     font-family: 'Noto Sans Vietnamese', sans-serif;

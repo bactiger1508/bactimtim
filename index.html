@@ -184,7 +184,7 @@ canvas {
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
     var year = getUrlParameter('year') || 2004;
-    var month = getUrlParameter('month') || 8; // Note: JavaScript months are 0-based
+    var month = getUrlParameter('month') || 8; // Convert to 0-based month
     var day = getUrlParameter('day') || 3;
     var userName = getUrlParameter('name') || 'cậu';
     
@@ -222,6 +222,7 @@ canvas {
                 nhuquynhBtn.style.opacity = 0.7;
                 
                 nhuquynhBtn.addEventListener("click", function() {
+                    // Pass the original month value (1-based) to tree.html
                     window.location.href = "tree.html?year=" + year + "&month=" + month + "&day=" + day + "&name=" + userName;
                 });
             }, 3000);
@@ -1138,5 +1139,3 @@ var ParticlePool = (function() {
  </body>
 
 </html>
-
-
