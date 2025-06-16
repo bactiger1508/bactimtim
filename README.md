@@ -20,7 +20,7 @@ This project is a playful and interactive webpage that displays animated hearts 
 To view the page, open the following URL in your browser:
 
 ```
-https://thepkz.github.io/thepValentine/
+https://bactiger1508.github.io/bactimtim/
 ```
 
 ### Customizing the Message
@@ -28,20 +28,20 @@ https://thepkz.github.io/thepValentine/
 You can customize the message by adding URL parameters for the name and date. Use the following format:
 
 ```
-https://thepkz.github.io/thepValentine/?name=YourName&year=YYYY&month=MM&day=DD
+https://bactiger1508.github.io/bactimtim/?name=NAME&year=YYYY&month=MM&day=DD
 ```
 
 - **name**: The name you want to display in the message.
 - **year**: The year for the date.
-- **month**: The month for the date (0-based, so January is 0).
+- **month**: The month for the date
 - **day**: The day for the date.
 
 ### Example
 
-To display the name "John" and the date January 15, 2000, use:
+To display the name "cậu" and the date August 03, 2004, use:
 
 ```
-https://thepkz.github.io/thepValentine/?name=John&year=2000&month=0&day=15
+https://bactiger1508.github.io/bactimtim/?name=cậu&year=2004&month=8&day=3
 ```
 
 ## Code Reference
@@ -58,9 +58,9 @@ The code for handling URL parameters is located in the `index.html` file:
         var results = regex.exec(location.search);
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
-    var year = getUrlParameter('year') || 2024;
-    var month = getUrlParameter('month') || 2; // Note: JavaScript months are 0-based
-    var day = getUrlParameter('day') || 20;
+    var year = getUrlParameter('year') || 2004;
+    var month = getUrlParameter('month') || 8;
+    var day = getUrlParameter('day') || 3;
     var userName = getUrlParameter('name') || 'cậu';
     
     document.addEventListener("DOMContentLoaded", function() {
@@ -105,6 +105,7 @@ The heart animation logic is implemented in the `index.html` file:
                 nhuquynhBtn.style.opacity = 0.7;
                 
                 nhuquynhBtn.addEventListener("click", function() {
+                    // Pass the original month value (1-based) to tree.html
                     window.location.href = "tree.html?year=" + year + "&month=" + month + "&day=" + day + "&name=" + userName;
                 });
             }, 3000);
