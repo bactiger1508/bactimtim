@@ -27,7 +27,6 @@ a {
 }
 
 #text {
-
     width: 470px;
     height: 400px;
     left: 0px;
@@ -83,69 +82,51 @@ a {
 .say {
     margin-left: 5px;
     font-family: 'Pacifico', 'Times New Roman', Times, serif;
-    /* Sử dụng font chữ Roboto hoặc một font sans-serif khác nếu bạn muốn */
     font-size: 20px;
-    /* Kích thước chữ */
     font-weight: 600;
-    /* Độ đậm nhẹ của chữ, bạn có thể điều chỉnh theo ý muốn */
-
     line-height: 1.1;
-    /* Độ cao dòng giữa các dòng chữ */
 }
 
 .space {
     margin-right: 150px;
-}
-@media (max-width: 768px) {
-    #wrap {
-        width: 95%;
-        padding: 15px;
-    }
-
-    #text {
-        max-width: 100%;
-        padding: 20px;
-    }
-    .say {
-        font-size: 30px !important;
-    }
-    #clock .digit {
-        font-size: 48px;
-    }
 }
 
 /* Styles for image containers and frames */
 .image-container {
     display: none;
     position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 20px;
+    top: auto;
+    transform: none;
     z-index: 1000;
 }
 
 .image-container.left,
 .image-container.right {
+    display: flex;
     flex-direction: column;
-    height: 80vh;
-    justify-content: space-between;
-    padding: 5vh 0;
+    justify-content: flex-end;
+    padding: 0;
+    height: auto;
+    bottom: 20px;
+    top: auto;
+    transform: none;
 }
 
 .image-container.left {
     left: 20px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start !important;
 }
 
 .image-container.right {
     right: 20px;
-    flex-direction: column;
     align-items: flex-end;
 }
 
 .image-frame {
-    width: 210px;
-    height: 210px;
+    width: 180px;
+    height: 180px;
     border: 5px solid transparent;
     border-radius: 20px;
     background: linear-gradient(135deg, #ffb6e6 0%, #ffe6fa 50%, #b4eaff 100%);
@@ -154,7 +135,7 @@ a {
     position: relative;
     transition: box-shadow 0.4s, border 0.4s, transform 0.3s;
     overflow: hidden;
-    margin-bottom: 38px;
+    margin-bottom: 30px;
     opacity: 0;
     animation: frame-pop 0.7s cubic-bezier(0.23, 1.12, 0.32, 1) forwards, floating 3.2s ease-in-out infinite;
 }
@@ -223,39 +204,27 @@ a {
 }
 
 /* Zigzag layout for images (chỉ desktop) */
-.image-container.left .image-frame:nth-child(odd) { margin-left: 0px; }
-.image-container.left .image-frame:nth-child(even) { margin-left: 60px; }
+.image-container.left .image-frame:nth-child(odd) { margin-left: 0px !important; }
+.image-container.left .image-frame:nth-child(even) { margin-left: 60px !important; }
 .image-container.right .image-frame:nth-child(odd) { margin-right: 0px; }
 .image-container.right .image-frame:nth-child(even) { margin-right: 60px; }
 
-/* Đảm bảo media query mobile vẫn override margin về 0 */
-@media (max-width: 700px) {
-  .image-container {
-    position: static !important;
-    top: unset !important;
-    left: unset !important;
-    right: unset !important;
-    bottom: unset !important;
-    transform: none !important;
-    z-index: auto !important;
-    width: 100vw;
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;    
-    align-items: flex-start;
-    margin: 0 auto;
-    padding: 0;
-    background: none !important;
-  }
-  .image-frame {
-    margin: 10px !important;
-    width: 90px;
-    height: 90px;
-  }
-  .image-container.left .image-frame,
-  .image-container.right .image-frame {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
+@media (max-width: 768px) {
+    #wrap {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #text {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .say {
+        font-size: 30px !important;
+    }
+
+    #clock .digit {
+        font-size: 48px;
+    }
 }

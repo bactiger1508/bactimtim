@@ -72,32 +72,32 @@
             </div>
             <canvas id="canvas" width="1100" height="680"></canvas>
         </div>
-        <div class="image-container left">
+        <div class="image-container left" style="display:none;">
             <div class="image-frame">
-                <img src="img/anh5.jpg" alt="Ảnh 1">
+                <img src="img/anh5.jpg" alt="Ảnh trái 1">
             </div>
             <div class="image-frame">
-                <img src="img/anh8.jpg" alt="Ảnh 1">
+                <img src="img/anh8.jpg" alt="Ảnh trái 2">
             </div>
             <div class="image-frame">
-                <img src="img/anh1.jpg" alt="Ảnh 1">
+                <img src="img/anh1.jpg" alt="Ảnh trái 3">
             </div>
             <div class="image-frame">
-                <img src="img/anh15.jpg" alt="Ảnh 1">
+                <img src="img/anh15.jpg" alt="Ảnh trái 4">
             </div>
         </div>
-        <div class="image-container right">
+        <div class="image-container right" style="display:none;">
             <div class="image-frame">
-                <img src="img/anh10.jpg" alt="Ảnh 2">
+                <img src="img/anh10.jpg" alt="Ảnh phải 1">
             </div>
             <div class="image-frame">
-                <img src="img/anh3.jpg" alt="Ảnh 2">
+                <img src="img/anh3.jpg" alt="Ảnh phải 2">
             </div>
             <div class="image-frame">
-                <img src="img/anh12.jpg" alt="Ảnh 2">
+                <img src="img/anh12.jpg" alt="Ảnh phải 3">
             </div>
             <div class="image-frame">
-                <img src="img/anh2.jpg" alt="Ảnh 2">
+                <img src="img/anh2.jpg" alt="Ảnh phải 4">
             </div>
         </div>
     </div>
@@ -306,7 +306,9 @@
                 $await(growAnimate());
                 $await(flowAnimate());
                 $await(moveAnimate());
-                showImageFrames();
+                document.querySelectorAll('.image-container').forEach(function(el) {
+                    el.style.display = 'flex';
+                });
                 textAnimate().start();
                 $await(jumpAnimate());
             }));
