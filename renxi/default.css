@@ -113,3 +113,149 @@ a {
         font-size: 48px;
     }
 }
+
+/* Styles for image containers and frames */
+.image-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.image-container.left,
+.image-container.right {
+    flex-direction: column;
+    height: 80vh;
+    justify-content: space-between;
+    padding: 5vh 0;
+}
+
+.image-container.left {
+    left: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.image-container.right {
+    right: 20px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.image-frame {
+    width: 210px;
+    height: 210px;
+    border: 5px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ffb6e6 0%, #ffe6fa 50%, #b4eaff 100%);
+    background-clip: padding-box, border-box;
+    box-shadow: 0 4px 16px 0 rgba(255, 105, 180, 0.15), 0 0 0 8px rgba(255,255,255,0.2) inset;
+    position: relative;
+    transition: box-shadow 0.4s, border 0.4s, transform 0.3s;
+    overflow: hidden;
+    margin-bottom: 38px;
+    opacity: 0;
+    animation: frame-pop 0.7s cubic-bezier(0.23, 1.12, 0.32, 1) forwards, floating 3.2s ease-in-out infinite;
+}
+
+.image-frame:nth-child(1) { animation-delay: 0.1s; }
+.image-frame:nth-child(2) { animation-delay: 0.3s; }
+.image-frame:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes frame-pop {
+    0% { opacity: 0; transform: scale(0.7) rotate(-8deg); }
+    60% { opacity: 1; transform: scale(1.08) rotate(3deg); }
+    80% { transform: scale(0.97) rotate(-2deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes floating {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    25% { transform: translateY(-10px) scale(1.03) rotate(-2deg); }
+    50% { transform: translateY(0) scale(1) rotate(0deg); }
+    75% { transform: translateY(10px) scale(0.98) rotate(2deg); }
+    100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+.image-frame::before {
+    content: "";
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border-radius: 20px;
+    z-index: 0;
+    background: linear-gradient(135deg, #ffb6e6 0%, #ffe6fa 50%, #b4eaff 100%);
+    opacity: 0.7;
+    filter: blur(6px);
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.image-frame:hover {
+    transform: scale(1.13) rotate(2deg);
+    box-shadow: 0 0 48px 16px #ffb6e6, 0 4px 24px rgba(0,0,0,0.22), 0 0 32px 8px #ff69b4;
+    border: 5px solid #fff0fa;
+}
+
+.image-frame:hover::before {
+    opacity: 1;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.5s cubic-bezier(0.23, 1.12, 0.32, 1);
+    animation: img-sway 4s ease-in-out infinite;
+}
+
+@keyframes img-sway {
+    0% { transform: scale(1) rotate(0deg); }
+    20% { transform: scale(1.01) rotate(-2deg); }
+    50% { transform: scale(1.02) rotate(2deg); }
+    80% { transform: scale(1.01) rotate(-2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.image-frame:hover img {
+    transform: scale(1.09) rotate(2deg);
+}
+
+/* Zigzag layout for images (chỉ desktop) */
+.image-container.left .image-frame:nth-child(odd) { margin-left: 0px; }
+.image-container.left .image-frame:nth-child(even) { margin-left: 60px; }
+.image-container.right .image-frame:nth-child(odd) { margin-right: 0px; }
+.image-container.right .image-frame:nth-child(even) { margin-right: 60px; }
+
+/* Đảm bảo media query mobile vẫn override margin về 0 */
+@media (max-width: 700px) {
+  .image-container {
+    position: static !important;
+    top: unset !important;
+    left: unset !important;
+    right: unset !important;
+    bottom: unset !important;
+    transform: none !important;
+    z-index: auto !important;
+    width: 100vw;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;    
+    align-items: flex-start;
+    margin: 0 auto;
+    padding: 0;
+    background: none !important;
+  }
+  .image-frame {
+    margin: 10px !important;
+    width: 90px;
+    height: 90px;
+  }
+  .image-container.left .image-frame,
+  .image-container.right .image-frame {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
