@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url('../img/background.jpeg') no-repeat center center fixed;
+    background: linear-gradient(135deg, #B0E0E6 0%, #FFFACD 100%); /* Xanh dương (PowderBlue) và Vàng (LemonChiffon) */
     background-size: cover;
     font-size: 14px;
     font-family: 'Noto Sans Vietnamese', sans-serif;
@@ -45,6 +45,7 @@ a {
     top: 550px;
     font-size: 28px;
     display: none;
+    color: #D2691E !important; /* Màu cam cháy */
 }
 
 #clock-box a {
@@ -58,8 +59,8 @@ a {
 
 #clock .digit {
     font-size: 64px;
-    color: #FF69B4;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: #FF4500 !important; /* Màu Orangered */
+    text-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
 }
 
 #canvas {
@@ -127,13 +128,13 @@ a {
 .image-frame {
     width: 180px;
     height: 180px;
-    border: 5px solid transparent;
+    border: 5px solid #FFB6C1; /* LightPink */
     border-radius: 20px;
     background: linear-gradient(135deg, #ffb6e6 0%, #ffe6fa 50%, #b4eaff 100%);
     background-clip: padding-box, border-box;
     box-shadow: 0 4px 16px 0 rgba(255, 105, 180, 0.15), 0 0 0 8px rgba(255,255,255,0.2) inset;
     position: relative;
-    transition: box-shadow 0.4s, border 0.4s, transform 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     margin-bottom: 30px;
     opacity: 0;
@@ -187,7 +188,7 @@ a {
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
-    transition: transform 0.5s cubic-bezier(0.23, 1.12, 0.32, 1);
+    transition: opacity 0.2s ease-in-out;
     animation: img-sway 4s ease-in-out infinite;
 }
 
@@ -201,6 +202,10 @@ a {
 
 .image-frame:hover img {
     transform: scale(1.09) rotate(2deg);
+}
+
+.image-frame img.fade-out {
+    opacity: 0;
 }
 
 /* Zigzag layout for images (chỉ desktop) */
@@ -227,4 +232,17 @@ a {
     #clock .digit {
         font-size: 48px;
     }
+}
+
+/* Custom Styles Added */
+#code .say {
+    background: none;
+    -webkit-background-clip: unset;
+    color: #5D4037; /* Màu nâu sẫm */
+}
+
+#code > div > span.say {
+    font-size: 1.35rem !important;
+    font-weight: bold !important;
+    color: #D2691E !important; /* Màu Chocolate */
 }
